@@ -1,0 +1,14 @@
+#header {
+   height: 10vh;
+   width: 100vw;
+   background-color: lightblue;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+#loginDiv {
+   width: 20vw;
+   height: 50%;
+   background-color: green;
+}
