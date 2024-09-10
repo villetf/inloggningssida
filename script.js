@@ -1,9 +1,11 @@
+localStorage.setItem('username', 'test');
 const storedUsername = localStorage.getItem('username');
 
 if (!storedUsername) {
    console.log('inget användarnamn lagrat');
    fillLoggedOutPage();
 } else {
+   console.log('inloggad');
    fillLoggedInPage();
 }
 
@@ -38,5 +40,13 @@ function fillLoggedOutPage() {
 function fillLoggedInPage() {
    const logOutButton = document.createElement('button');
    logOutButton.id = 'logOutButton';
-   
+   logOutButton.innerText = 'Logga ut';
+   document.getElementById('loginDiv').appendChild(logOutButton);
+
+   const mainText = document.getElementById('mainText');
+   mainText.innerText = 'Välkommen!';
+
+   const underText = document.createElement('h3');
+   underText.innerText = `Du är nu inloggad som ${localStorage.getItem('username')}.`;
+   document.getElementById('contentDiv').appendChild(underText);
 }
