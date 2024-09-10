@@ -47,7 +47,6 @@ function fillLoggedOutPage() {
 function testCredentials() {
    const unameValue = document.getElementById('usernameField').value;
    const pwordValue = document.getElementById('passwordField').value;
-   console.log(unameValue, pwordValue);
 
    if (unameValue != 'test' && pwordValue != '1234') {
       handleIncorrectLogin();
@@ -74,4 +73,14 @@ function fillLoggedInPage() {
    const underText = document.createElement('h3');
    underText.innerText = `Du är nu inloggad som ${localStorage.getItem('username')}.`;
    document.getElementById('contentDiv').appendChild(underText);
+}
+
+function handleIncorrectLogin() {
+   document.getElementById('usernameField').value = '';
+   document.getElementById('passwordField').value = '';
+   setTimeout(() => {
+      alert('Inloggningsuppgifterna som du angav var felaktiga.');
+   }, 500);
+   
+
 }
