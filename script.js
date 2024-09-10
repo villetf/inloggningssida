@@ -1,4 +1,3 @@
-localStorage.setItem('username', 'test');
 const storedUsername = localStorage.getItem('username');
 
 if (!storedUsername) {
@@ -11,12 +10,14 @@ if (!storedUsername) {
 
 function fillLoggedOutPage() {
    const loginForm = document.createElement('form');
+   loginForm.id = 'loginForm';
    document.getElementById('loginDiv').appendChild(loginForm);
 
    const usernameLabel = document.createElement('label');
    usernameLabel.innerText = 'Användarnamn:';
    const usernameField = document.createElement('input');
    usernameField.type = 'text';
+   usernameField.id = 'usernameField';
    usernameLabel.appendChild(usernameField);
    loginForm.appendChild(usernameLabel);
 
@@ -24,6 +25,7 @@ function fillLoggedOutPage() {
    passwordLabel.innerText = 'Lösenord:';
    const passwordField = document.createElement('input');
    passwordField.type = 'password';
+   passwordField.id = 'passwordField';
    passwordLabel.appendChild(passwordField);
    loginForm.appendChild(passwordLabel);
 
@@ -35,9 +37,29 @@ function fillLoggedOutPage() {
 
    const mainText = document.getElementById('mainText');
    mainText.innerText = 'Logga in uppe till höger';
+
+   submitButton.onclick = (event) => {
+      event.preventDefault();
+      testCredentials();
+   };
+}
+
+function testCredentials() {
+   const unameValue = document.getElementById('usernameField').value;
+   const pwordValue = document.getElementById('passwordField').value;
+   console.log(unameValue, pwordValue);
+
+   if (unameValue != 'test' && pwordValue != '1234') {
+      handleIncorrectLogin();
+      return;
+   }
 }
 
 function fillLoggedInPage() {
+   if (document.getElementById('loginForm')) {
+      document.getElementById('loginForm').remove();
+   }
+
    const logOutButton = document.createElement('button');
    logOutButton.id = 'logOutButton';
    logOutButton.innerText = 'Logga ut';
