@@ -9,6 +9,12 @@ if (!storedUsername) {
 }
 
 function fillLoggedOutPage() {
+   if (document.getElementById('logOutButton')) {
+      document.getElementById('logOutButton').remove();
+   }
+   if (document.getElementById('underText')) {
+      document.getElementById('underText').remove();
+   }
    const loginForm = document.createElement('form');
    loginForm.id = 'loginForm';
    document.getElementById('loginDiv').appendChild(loginForm);
@@ -44,19 +50,6 @@ function fillLoggedOutPage() {
    };
 }
 
-function testCredentials() {
-   const unameValue = document.getElementById('usernameField').value;
-   const pwordValue = document.getElementById('passwordField').value;
-
-   if (unameValue != 'test' && pwordValue != '1234') {
-      handleIncorrectLogin();
-      return;
-   }
-
-   localStorage.setItem('username', unameValue);
-   fillLoggedInPage();
-}
-
 function fillLoggedInPage() {
    if (document.getElementById('loginForm')) {
       document.getElementById('loginForm').remove();
@@ -66,13 +59,31 @@ function fillLoggedInPage() {
    logOutButton.id = 'logOutButton';
    logOutButton.innerText = 'Logga ut';
    document.getElementById('loginDiv').appendChild(logOutButton);
+   logOutButton.onclick = () => {
+      fillLoggedOutPage();
+      localStorage.removeItem('username');
+   };
 
    const mainText = document.getElementById('mainText');
    mainText.innerText = 'Välkommen!';
 
    const underText = document.createElement('h3');
+   underText.id = 'underText';
    underText.innerText = `Du är nu inloggad som ${localStorage.getItem('username')}.`;
    document.getElementById('contentDiv').appendChild(underText);
+}
+
+function testCredentials() {
+   const unameValue = document.getElementById('usernameField').value;
+   const pwordValue = document.getElementById('passwordField').value;
+
+   if (unameValue != 'test' || pwordValue != '1234') {
+      handleIncorrectLogin();
+      return;
+   }
+
+   localStorage.setItem('username', unameValue);
+   fillLoggedInPage();
 }
 
 function handleIncorrectLogin() {
