@@ -53,6 +53,9 @@ function testCredentials() {
       handleIncorrectLogin();
       return;
    }
+
+   localStorage.setItem('username', unameValue);
+   fillLoggedInPage();
 }
 
 function fillLoggedInPage() {
