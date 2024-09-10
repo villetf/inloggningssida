@@ -78,9 +78,5 @@ function fillLoggedInPage() {
 function handleIncorrectLogin() {
    document.getElementById('usernameField').value = '';
    document.getElementById('passwordField').value = '';
-   setTimeout(() => {
-      alert('Inloggningsuppgifterna som du angav var felaktiga.');
-   }, 500);
-   
-
+   alert('Inloggningsuppgifterna som du angav var felaktiga.');
 }
