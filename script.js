@@ -42,7 +42,7 @@ function fillLoggedOutPage() {
    loginForm.appendChild(submitButton);
 
    const mainText = document.getElementById('mainText');
-   mainText.innerText = 'Logga in uppe till höger';
+   mainText.innerText = 'Logga in uppe till höger...';
 
    submitButton.onclick = (event) => {
       event.preventDefault();
