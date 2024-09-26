@@ -1,4 +1,6 @@
 const storedUsername = localStorage.getItem('username');
+const correctUsername = 'test';
+const correctPassword = '1234';
 
 if (!storedUsername) {
    console.log('inget användarnamn lagrat');
@@ -77,7 +79,7 @@ function testCredentials() {
    const unameValue = document.getElementById('usernameField').value;
    const pwordValue = document.getElementById('passwordField').value;
 
-   if (unameValue != 'test' || pwordValue != '1234') {
+   if (unameValue != correctUsername || pwordValue != correctPassword) {
       handleIncorrectLogin();
       return;
    }
