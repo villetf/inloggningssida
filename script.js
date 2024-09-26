@@ -89,7 +89,13 @@ function testCredentials() {
 }
 
 function handleIncorrectLogin() {
+   if (document.getElementById('errorText')) {
+      document.getElementById('errorText').remove();
+   }
    document.getElementById('usernameField').value = '';
    document.getElementById('passwordField').value = '';
-   alert('Inloggningsuppgifterna som du angav var felaktiga.');
+   const errorText = document.createElement('p');
+   errorText.id = 'errorText';
+   errorText.innerText = 'Inloggningsuppgifterna som du angav var felaktiga, försök igen';
+   document.getElementById('loginForm').appendChild(errorText);
 }

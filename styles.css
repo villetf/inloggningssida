@@ -19,12 +19,18 @@ html, body {
 
 #loginDiv {
    width: 50vw;
-   height: 50%;
+   height: 100%;
    display: flex;
    align-items:center;
 }
 
-#loginForm, #logOutButton {
+#loginForm {
+   margin-left: auto;
+   height: 50%;
+   text-align: center;
+}
+
+#logOutButton {
    margin-left: auto;
 }
 
@@ -42,4 +48,10 @@ html, body {
 
 h1, h3 {
    margin-left: 20px;
+}
+
+#errorText {
+   color: darkred;
+   padding: 0;
+   margin-top: 10px;
 }
